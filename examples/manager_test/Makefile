@@ -23,16 +23,7 @@ PRGADR		?=	0x20000000
 
 PRGTTY		?=	/dev/ttyUSB0
 
-######## TEST ##############
-#ifeq "$(PORT)" "3"
-#	PRGTTY 	=	/dev/ttyUSB3
-#else ifeq "$(PORT)" "2"
-#	PRGTTY 	=	/dev/ttyUSB2
-#else ifeq "$(PORT)" "1"
-#	PRGTTY 	=	/dev/ttyUSB1
-#else 
-#	PRGTTY 	=	/dev/ttyUSB0
-#endif
+
 
 PRGTTY 	=	/dev/ttyUSB$(PORT)
 
@@ -95,6 +86,14 @@ else ifeq "$(TARGET_ADR)" "ENVM"
 	LDFILE	=	$(SPTPATH)/link-microsemi-sf2-envm.ld
 	PRGADR	= 	0x60000000
 	PRGPAR 	+= 	-w 128
+# New test with DDR-RAM
+else ifeq "$(TARGET_ADR)" "DDR"
+	LDFILE	=	$(SPTPATH)/link-microsemi-sf2-ddr.ld
+	PRGADR	= 	0xa0000000
+# New test with SPI flash
+else ifeq "$(TARGET_ADR)" "SPI"
+	LDFILE	=	$(SPTPATH)/link-microsemi-sf2-ddr.ld
+	PRGADR	= 	0x00000000
 else
 	EXIT = 1
 endif
@@ -121,7 +120,7 @@ all: $(OBJECTS)
 	$(OBJCPY) -O binary obj/$(NAME) $(NAME).bin
 else
 all:
-	$(error Please specify TARGET_ADR=<adr> where adr is ESRAM, EXTRAM or ENVM)
+	$(error Please specify TARGET_ADR=<adr> where adr is ESRAM, EXTRAM, ENVM, DDR or SPI)
 endif
 
 obj/%.o: %.c
