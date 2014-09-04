@@ -27,10 +27,10 @@ package body AppX is
          new Buffers(VN.VN_Logical_Address);
 
       Basic_Msg: VN.Message.VN_Message_Basic;
-      Local_Hello_Msg: VN.Message.Local_Hello.VN_Message_Local_Hello;
+     -- Local_Hello_Msg: VN.Message.Local_Hello.VN_Message_Local_Hello;
       Assign_Address_Msg: VN.Message.Assign_Address.VN_Message_Assign_Address;
       Probe_Request_Msg: VN.Message.Probe_Request.VN_Message_Probe_Request;
-      Probe_Reply_Msg: VN.Message.Probe_Reply.VN_Message_Probe_Reply;
+     -- Probe_Reply_Msg: VN.Message.Probe_Reply.VN_Message_Probe_Reply;
 
       Recv_Status: VN.Receive_Status;
       Send_Status: VN.Send_Status;
@@ -44,6 +44,7 @@ package body AppX is
       Period : constant Ada.Real_Time.Time_Span :=
                            Ada.Real_Time.Microseconds(Cycle_Time);
    begin
+
       App_Info.Component_Type := VN.Message.Other;
       App_Info.Logical_Address := VN.LOGICAL_ADDRES_UNKNOWN;
 

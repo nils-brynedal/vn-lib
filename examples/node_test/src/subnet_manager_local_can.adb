@@ -34,7 +34,7 @@ package body Subnet_Manager_Local_CAN is
       SM_L_Info.Logical_Address := VN.LOGICAL_ADDRES_UNKNOWN;
 
       Global_Settings.Start_Time.Get(Next_Period);
-      VN.Text_IO.Put_Line("SM-CAN STAT: Starts.");
+      VN.Text_IO.Put_Line("SM-CAN STAT: Starts. CUUID= " & Global_Settings.CUUID_SM_CAN(1)'Img);
 
       ----------------------------
       loop

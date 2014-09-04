@@ -76,7 +76,12 @@ package body VN.Communication.CAN.CAN_Task is
 
    begin
 
-      VN.Text_IO.Put_Line("CAN_Task started");
+      VN.Text_IO.Put_Line("CAN_Task starting 5 second wait.");
+
+      Next_Period := Ada.Real_Time.Clock + Ada.Real_Time.Seconds(5);
+      delay until Next_Period;
+
+      VN.Text_IO.Put_Line("5 second wait ended. CAN_Task running");
 
       myPeriod := thePeriod.all;
       Next_Period := Ada.Real_Time.Clock;

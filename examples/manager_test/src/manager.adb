@@ -18,6 +18,7 @@ procedure Manager is
    myPeriod : Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(1000);
    Next_Period : Ada.Real_Time.Time;
 begin
+
    VN.Text_IO.Put_Line("Hello world!!");
 
    Global_Settings.Com_Application.Init;
